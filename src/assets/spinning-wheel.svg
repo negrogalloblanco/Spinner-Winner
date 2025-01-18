@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Outer Circle -->
+  <circle cx="100" cy="100" r="95" fill="#f4f4f4" stroke="#000" stroke-width="2" />
+
+  <!-- Segments -->
+  <path d="M100,100 L100,5 A95,95 0 0,1 195,100 Z" fill="#FF5722" />
+  <path d="M100,100 L195,100 A95,95 0 0,1 100,195 Z" fill="#FFC107" />
+  <path d="M100,100 L100,195 A95,95 0 0,1 5,100 Z" fill="#4CAF50" />
+  <path d="M100,100 L5,100 A95,95 0 0,1 100,5 Z" fill="#2196F3" />
+
+  <!-- Center Circle -->
+  <circle cx="100" cy="100" r="15" fill="#000" />
+
+  <!-- Arrow -->
+  <polygon points="100,0 95,20 105,20" fill="#000" />
+</svg>
+    
