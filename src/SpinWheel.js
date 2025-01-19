@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // Prizes for each spin
-const prizes = ["CToken for Raffle Entry","CToken for Raffle Entry","CToken for Raffle Entry","CToken for Raffle Entry"];
+const prizes = ["Token for Raffle Entry"];
 
 const SpinWheel = () => {
   const [isSpinning, setIsSpinning] = useState(false);
@@ -15,28 +15,23 @@ const SpinWheel = () => {
     setRaffleNumber(null);
 
     // Generate a random raffle number
-    const randomRaffleNumber = Math.floor(1000000 + Math.random() * 900000); // 6-digit number
+    const randomRaffleNumber = Math.floor(100000 + Math.random() * 900000); // 6-digit number
 
-    // Spin logic
-    const totalDuration = 1000; // 3 seconds
-    const totalSteps = 360 * 1.98552; // 10 full rotations
+    // Simulate the star moving around the circle
+    const spinDuration = 3000; // Spin for 3 seconds
+    const intervalTime = 50; // Move the star every 50ms
+    const totalSteps = spinDuration / intervalTime;
     let currentStep = 0;
-    const intervalTime = totalDuration / totalSteps;
 
     const interval = setInterval(() => {
+      setStarPosition((prev) => (prev + 1) % 360); // Move star 1 degree at a time
       currentStep += 1;
-
-      // Move the star position
-      setStarPosition((prev) => (prev + 8.5) % 360); // Fast spin (increments by 10 degrees)
 
       if (currentStep >= totalSteps) {
         clearInterval(interval);
-
-        // Stop at the final position
-        setStarPosition(randomRaffleNumber % 360); // Modulo ensures it aligns with the random number
-        setRaffleNumber(randomRaffleNumber); // Set the raffle number
-
         setIsSpinning(false);
+        setStarPosition((randomRaffleNumber % 360)); // Stop the star at a final position
+        setRaffleNumber(randomRaffleNumber); // Display the raffle number
       }
     }, intervalTime);
   };
@@ -46,7 +41,7 @@ const SpinWheel = () => {
       <h1 style={headerStyle}>World Raffle</h1>
       <div style={circleContainerStyle}>
         <div style={{ ...starStyle, transform: `rotate(${starPosition}deg)` }}>
-          <div style={starInnerStyle}>x</div>
+          <div style={starInnerStyle}>⭐</div>
         </div>
         <div style={circleStyle}>
           {prizes.map((prize, index) => (
@@ -83,7 +78,7 @@ const containerStyle = {
   alignItems: "center",
   justifyContent: "center",
   minHeight: "100vh",
-  backgroundColor: "#000", // Luxury cream-white background
+  backgroundColor: "#FFF8E1", // Luxury cream-white background
   fontFamily: "'Playfair Display', serif", // Elegant serif font
 };
 
@@ -116,7 +111,7 @@ const sliceStyle = {
   height: "50%",
   transformOrigin: "100% 100%",
   borderTopLeftRadius: "100%",
-  border: "1px solidrgb(252, 252, 252)", // Deep gold borders
+  border: "1px solid #B8860B", // Deep gold borders
 };
 
 const prizeTextStyle = {
@@ -146,7 +141,7 @@ const starInnerStyle = {
   left: "50%",
   transform: "translateX(-50%)",
   fontSize: "20px",
-  color: "#000  ", // Gold star
+  color: "#FFD700", // Gold star
 };
 
 const buttonStyle = {
